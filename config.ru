@@ -1,4 +1,7 @@
 $LOAD_PATH.unshift('lib')
+
+require 'api'
 require 'client'
 
-run Client
+use Client
+run Api

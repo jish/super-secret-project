@@ -1,5 +1,4 @@
 require 'minitest/spec'
-require 'rack/mock'
 require 'client'
 
 MiniTest::Unit.autorun
