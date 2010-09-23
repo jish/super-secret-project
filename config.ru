@@ -1,4 +1,4 @@
 $LOAD_PATH.unshift('lib')
-require 'ssp'
+require 'client'
 
-run Ssp
+run Client

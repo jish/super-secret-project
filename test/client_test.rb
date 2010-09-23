@@ -1,13 +1,13 @@
 require 'minitest/spec'
 require 'rack/mock'
-require 'ssp'
+require 'client'
 
 MiniTest::Unit.autorun
 
-describe Ssp do
+describe Client do
 
   before do
-    @app = Ssp.new
+    @app = Client.new
   end
 
   it 'should return a 200 on the index page' do

@@ -1,6 +1,6 @@
 require 'sinatra/base'
 
-class Ssp < Sinatra::Base
+class Client < Sinatra::Base
 
   get '/' do
     'Super secret project'
