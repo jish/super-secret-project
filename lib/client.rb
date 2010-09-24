@@ -3,7 +3,7 @@ require 'sinatra/base'
 class Client < Sinatra::Base
 
   get '/' do
-    'Super secret project'
+    erb :index
   end
 
 end
