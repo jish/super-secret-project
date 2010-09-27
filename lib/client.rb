@@ -7,7 +7,7 @@ class Client < Sinatra::Base
       if ENV['RACK_ENV'] == 'development'
         path = "/javascripts/vendor/jquery-#{version}.js"
       else
-        path = 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'
+        path = "http://ajax.googleapis.com/ajax/libs/jquery/#{version}/jquery.min.js"
       end
 
       "<script type=\"text/javascript\" src=\"#{path}\"></script>"
