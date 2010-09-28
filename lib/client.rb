@@ -5,7 +5,8 @@ class Client < Sinatra::Base
 
   include ClientHelpers
 
-  set :public, 'public'
+  set :views, File.dirname(__FILE__) + '/../public'
+  set :views, File.dirname(__FILE__) + '/../views'
 
   get '/' do
     erb :index
