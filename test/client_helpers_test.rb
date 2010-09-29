@@ -1,7 +1,5 @@
-require 'minitest/spec'
+require 'minitest/autorun'
 require 'client_helpers'
-
-MiniTest::Unit.autorun
 
 class ClientHelpersClass
   include ClientHelpers

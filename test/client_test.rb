@@ -1,7 +1,5 @@
-require 'minitest/spec'
+require 'minitest/autorun'
 require 'client'
-
-MiniTest::Unit.autorun
 
 describe Client do
 

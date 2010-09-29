@@ -1,7 +1,5 @@
-require 'minitest/spec'
+require 'minitest/autorun'
 require 'api'
-
-MiniTest::Unit.autorun
 
 describe Api do
 
