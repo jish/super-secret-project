@@ -13,4 +13,10 @@ describe Client do
     response.status.must_equal 200
   end
 
+  it 'should load files from the public directory' do
+    request = Rack::MockRequest.new(@app)
+    response = request.get('/javascripts/vendor/jquery-1.4.2.js')
+    response.status.must_equal 200
+  end
+
 end
