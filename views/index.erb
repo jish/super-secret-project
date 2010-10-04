@@ -1,2 +1,13 @@
 
-Super secret project
+<div id="commits"></div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    $.get('/commits.json', function(data) {
+      $(data).each(function(index, commit) {
+        var commitElement = $('<p>' + commit.author + '</p><p>' + commit.message + '</p>');
+        $('#commits').append(commitElement);
+      });
+    });
+  })
+</script>
