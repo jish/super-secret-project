@@ -18,7 +18,7 @@ describe Api do
     end
 
     it 'should serve with a json content type' do
-      @response.content_type.must_equal 'application/json'
+      @response.content_type.must_equal 'application/json;charset=utf-8'
     end
   end
 
