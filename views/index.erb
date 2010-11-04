@@ -5,7 +5,7 @@
   $(function() {
     $.get('/commits.json', function(data) {
       $(data).each(function(index, commit) {
-        var commitElement = $('<p>' + commit.author.name + '</p><p>' + commit.message + '</p>');
+        var commitElement = $('<div class="commit"><p>' + commit.author.name + '</p><p>' + commit.message + '</p></div>');
         $('#commits').append(commitElement);
       });
     });
