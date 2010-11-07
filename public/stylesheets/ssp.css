@@ -4,12 +4,13 @@ body {
   font-size: small;
 }
 
-.commit {
-  border: 1px solid blue;
-  margin: 10px 0;
-  padding: 10px;
+#commits {
+  border: 1px solid #999;
+  border-width: 1px 1px 0 1px;
+  width: 300px;
 }
 
-.commit p {
-  margin: 0;
+.commit {
+  border-bottom: 1px solid #999;
+  padding: 3px;
 }
