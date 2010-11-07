@@ -17,6 +17,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  grit
-  sinatra
-  yajl-ruby
+  grit (= 2.3.0)
+  sinatra (= 1.1.0)
+  yajl-ruby (= 0.7.8)
