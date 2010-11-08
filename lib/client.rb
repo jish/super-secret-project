@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'grit'
 require 'client_helpers'
 
 class Client < Sinatra::Base
@@ -10,6 +11,12 @@ class Client < Sinatra::Base
 
   get '/' do
     erb :index
+  end
+
+  get '/commit/:id' do |id|
+    repo = Grit::Repo.new(File.expand_path('../..', __FILE__))
+    @commit = repo.commit(params[:id])
+    erb :commit
   end
 
 end

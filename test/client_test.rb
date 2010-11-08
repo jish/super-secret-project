@@ -19,4 +19,15 @@ describe Client do
     response.status.must_equal 200
   end
 
+  describe 'commit#show' do
+    before do
+      request = Rack::MockRequest.new(@app)
+      @response = request.get('/commit/4c62fee39c9665623c9ac9ac0bcc86ba41530afd')
+    end
+
+    it 'should respond with success' do
+      @response.status.must_equal 200
+    end
+  end
+
 end
