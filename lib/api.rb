@@ -11,4 +11,11 @@ class Api < Sinatra::Base
     Yajl::Encoder.encode(commits.map { |c| c.to_hash })
   end
 
+  get '/commit/:id.json' do |id|
+    content_type :json
+    repo = Grit::Repo.new(File.expand_path('../..', __FILE__))
+    commit = repo.commit(params[:id])
+    Yajl::Encoder.encode(commit.to_hash)
+  end
+
 end
