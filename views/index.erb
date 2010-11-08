@@ -1,11 +1,29 @@
 
 <div id="commits"></div>
+<div id="display">Click on a commit to load it's details.</div>
 
 <script type="text/javascript" charset="utf-8">
   $(function() {
+    function loadCommit(id) {
+      $.get('/commit/' + id + '.json', function(commit) {
+        $('#display').html(commit.author.name + '<br>' +
+          commit.committed_date + '<br>' +
+          commit.message);
+      });
+    }
+
+    function hilight(element) {
+      $('#commits .commit').removeClass('current');
+      $(element).addClass('current');
+    }
+
     $.get('/commits.json', function(data) {
       $(data).each(function(index, commit) {
         var commitElement = $('<div class="commit">' + commit.message + '</div>');
+        commitElement.click(function() {
+          hilight(this);
+          loadCommit(commit.id);
+        });
         $('#commits').append(commitElement);
       });
     });
