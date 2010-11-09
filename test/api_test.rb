@@ -35,6 +35,10 @@ describe Api do
     it 'should serve with a json content type' do
       @response.content_type.must_equal 'application/json;charset=utf-8'
     end
+
+    it 'should include a diff attribute' do
+      @response.body.must_match /"diff":/
+    end
   end
 
 end

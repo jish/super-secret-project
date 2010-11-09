@@ -1,3 +1,4 @@
+require 'cgi'
 require 'sinatra/base'
 require 'grit'
 require 'yajl'
@@ -15,7 +16,8 @@ class Api < Sinatra::Base
     content_type :json
     repo = Grit::Repo.new(File.expand_path('../..', __FILE__))
     commit = repo.commit(params[:id])
-    Yajl::Encoder.encode(commit.to_hash)
+    commit = commit.to_hash.merge(:diff => CGI.escape_html(commit.diffs.map { |d| d.diff }.join("\n")))
+    Yajl::Encoder.encode(commit)
   end
 
 end
