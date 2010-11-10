@@ -3,6 +3,13 @@
 <div id="display">Click on a commit to load it's details.</div>
 
 <script type="text/javascript" charset="utf-8">
+  
+  function markAccepted(commitId) {
+    localStorage['commit.' + commitId + '.accepted'] = true;
+    $('#commit_' + commitId).addClass('accepted');
+    $('#display button.accept').remove();
+  }
+
   $(function() {
     function loadCommit(id) {
       $.get('/commit/' + id + '.json', function(commit) {
@@ -10,6 +17,10 @@
           commit.committed_date + '<br>' +
           commit.message.replace(/\n/g, '<br>') + '<br>' +
           commit.diff.replace(/\n/g, '<br>'));
+
+        var button = $('<button>accept</button>').addClass('accept');
+        button.click(function() { markAccepted(commit.id); });
+        $('#display').append(button);
       });
     }
 
@@ -20,12 +31,20 @@
 
     $.get('/commits.json', function(data) {
       $(data).each(function(index, commit) {
-        var commitElement = $('<div class="commit">' +
-          commit.message.split('\n')[0].substr(0, 50) + '</div>');
+        var commitElement = $('<div>').addClass('commit');
+        commitElement.attr('id', 'commit_' + commit.id);
+
+        if (localStorage['commit.' + commit.id + '.accepted'] == 'true') {
+          commitElement.addClass('accepted');
+        }
+
+        commitElement.html(commit.message.split('\n')[0].substr(0, 50));
+
         commitElement.click(function() {
           hilight(this);
           loadCommit(commit.id);
         });
+
         $('#commits').append(commitElement);
       });
     });

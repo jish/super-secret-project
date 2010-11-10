@@ -18,6 +18,10 @@ body {
   padding: 3px;
 }
 
+#commits .commit.accepted {
+  text-decoration: line-through;
+}
+
 #commits .commit:hover {
   background-color: yellow;
 }
