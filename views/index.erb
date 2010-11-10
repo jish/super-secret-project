@@ -5,7 +5,9 @@
 <script type="text/javascript" charset="utf-8">
   
   function markAccepted(commitId) {
-    localStorage['commit.' + commitId + '.accepted'] = true;
+    var commit = new Commit({id:commitId});
+    commit.accept();
+
     $('#commit_' + commitId).addClass('accepted');
     $('#display button.accept').remove();
   }
@@ -39,7 +41,7 @@
           commitElement.addClass('accepted');
         }
 
-        commitElement.html(commit.subject);
+        commitElement.html(commit.subject());
 
         commitElement.click(function() {
           hilight(this);
