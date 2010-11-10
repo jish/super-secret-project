@@ -30,15 +30,16 @@
     }
 
     $.get('/commits.json', function(data) {
-      $(data).each(function(index, commit) {
+      $(data).each(function(index, commitAttributes) {
+        var commit = new Commit(commitAttributes);
         var commitElement = $('<div>').addClass('commit');
         commitElement.attr('id', 'commit_' + commit.id);
 
-        if (localStorage['commit.' + commit.id + '.accepted'] == 'true') {
+        if (commit.accepted) {
           commitElement.addClass('accepted');
         }
 
-        commitElement.html(commit.message.split('\n')[0].substr(0, 50));
+        commitElement.html(commit.subject);
 
         commitElement.click(function() {
           hilight(this);
