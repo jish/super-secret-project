@@ -14,6 +14,8 @@ class Api < Sinatra::Base
 
   get '/commit/:id.json' do |id|
     content_type :json
+    expires 300
+
     repo = Grit::Repo.new(File.expand_path('../..', __FILE__))
     commit = repo.commit(params[:id])
     commit = commit.to_hash.merge(:diff => CGI.escape_html(commit.diffs.map { |d| d.diff }.join("\n")))

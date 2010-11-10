@@ -39,6 +39,10 @@ describe Api do
     it 'should include a diff attribute' do
       @response.body.must_match /"diff":/
     end
+
+    it 'should include a cache control header' do
+      @response.headers['Cache-Control'].must_match /max-age=/
+    end
   end
 
 end
