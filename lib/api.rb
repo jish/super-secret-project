@@ -8,7 +8,7 @@ class Api < Sinatra::Base
   get '/commits.json' do
     content_type :json
     repo = Grit::Repo.new(File.expand_path('../..', __FILE__))
-    commits = repo.commits
+    commits = repo.commits('master', 30)
     Yajl::Encoder.encode(commits.map { |c| c.to_hash })
   end
 
